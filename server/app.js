@@ -6,8 +6,7 @@ import {
 } from "node:crypto";
 import express from "express";
 import cookieParser from "cookie-parser";
-import { emojiOptions } from "../src/countdowns.ts";
-import { isValidDate } from "../src/dates.ts";
+import { emojiOptions, isValidDate } from "./validation.js";
 
 const cookieName = "dias_session";
 const sessionLifetime = 7 * 24 * 60 * 60 * 1000;
