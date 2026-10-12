@@ -10,6 +10,18 @@ try {
   if (error.code !== "ENOENT") throw error;
 }
 
-const app = createApp(createSupabaseStore(process.env));
+const handler =
+  !process.env.SUPABASE_URL || !process.env.SUPABASE_SECRET_KEY
+    ? (_request, response) => {
+        response.statusCode = 503;
+        response.setHeader("Content-Type", "application/json; charset=utf-8");
+        response.end(
+          JSON.stringify({
+            error:
+              "Configure SUPABASE_URL e SUPABASE_SECRET_KEY nas Environment Variables da Vercel e faça um novo deploy.",
+          }),
+        );
+      }
+    : createApp(createSupabaseStore(process.env));
 
-export default app;
+export default handler;
