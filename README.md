@@ -43,3 +43,7 @@ npm start
 ```
 
 O Express serve o build e o fallback das rotas `/`, `/nova`, `/editar/:id` e `/usuarios`, sem `#`. Nao use `vite preview` como servidor completo: ele nao inicia a API.
+
+## Vercel
+
+O handler `api/[...path].js` encaminha as rotas `/api/*` para a API Express. Configure `SUPABASE_URL` e `SUPABASE_SECRET_KEY` nas Environment Variables do projeto Vercel para cada ambiente e faça um novo deploy. A chave secreta nao deve ser adicionada ao frontend nem ao repositorio.
